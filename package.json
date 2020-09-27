@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "zoe",
+    "lint:fix": "zoe --fix"
   },
   "dependencies": {
     "@tipe/js": "*",
@@ -17,7 +19,9 @@
     "react-icons": "^3.11.0"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.8.10"
+    "tailwindcss": "^1.8.10",
+    "zoe": "^2.2.80"
   }
 }
