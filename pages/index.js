@@ -9,22 +9,21 @@ export default function Home({documents, editUrl}) {
   const home = documents[0].fields
   return (
     <div className="pb-12 bg-black"> 
-     <div className="flex flex-wrap items-center h-screen shadow-2xl">
-      <div className="bg-black w-full md:w-1/2 h-screen border-b-4 border-white">
-        <div className="mx-32">
-          <h1 className="text-4xl font-bold mt-16 text-indigo-600">{home.title}</h1>
+     <div className="flex items-center h-screen shadow-2xl border-b-2 border-white">
+      <div className="bg-black w-full h-screen border-b-2 border-white">
+        <div className="lg:mx-20 md:mx-12 sm:mx-8">
+          <h1 className="lg:text-4xl md:text-3xl sm:text-2xl font-bold mt-16 text-indigo-600">{home.title}</h1>
 
-            {/* <!-- bio --> */}
+                      {/* <!-- bio --> */}
           <div
-            className="description w-full mt-2 text-gray-600 text-md"
+            className="description w-full mt-2 text-gray-600 lg:text-lg md:text-sm sm:text-sm"
           >
             {home.description}
           </div>
+
+
             {/* <!-- links --> */}
-      <div className="mt-6">
-      <h2 className="text-sm text-white">{home.contact}</h2>
-      </div>
-      <div className="mt-2 flex justify-between">
+      <div className="mt-4 flex justify-center">
         <div className="px-2">
           <a className="text-blue-500 hover:text-blue-800" href="https://www.linkedin.com/in/d-andra-moss-phd-she-her-hers-7547161b4/"><AiFillLinkedin /></a>
           </div>  
@@ -42,18 +41,19 @@ export default function Home({documents, editUrl}) {
           </div>
       </div>
         </div>
-      </div>
-                  
-      
-                  {/* <!-- profile pic --> */}
-      <div class="flex items-center w-full md:w-1/2 h-screen shadow-lg bg-black border-b-4 border-white">
-        <img
+                    {/* <!-- profile pics --> */}
+      <div class="mt-4 flex justify-between bg-black">
+        <div className="px-2">
+          <img
           src={home.mainImg.url}
-          class="h-auto w-3/5"
+          size=""
+          className="lg:w-3/5 md:w-2/5 sm:w-1/5"
           alt=""
-        />
+          />
+        </div>
       </div>
     </div>
+  </div>
 
           {/* <!-- Research projects -- */}
     <div className="px-5 my-8">
@@ -62,7 +62,7 @@ export default function Home({documents, editUrl}) {
         </div>
     </div>
                 {/* <!-- card -- */}
-    <div className="grid grid-cols-2 gap-4">
+    <div className="sm:grid grid-cols-2 gap-4">
     {home.research.items.map(item => (
      <Project item={item}/>
   ))}
@@ -74,7 +74,7 @@ export default function Home({documents, editUrl}) {
         </div>
     </div>
                       {/* <!-- card -- */}
-    <div className="grid grid-cols-2 gap-4">
+    <div className="sm:grid grid-cols-2 gap-4">
     {home.projects.items.map(item => (
       <Project item={item}/>
   ))}

@@ -174,6 +174,16 @@ module.exports = createSchema([
         label: "Main Image"
       },
       {
+        id: "mainImg1",
+        type: "image",
+        label: "Main Image"
+      },
+      {
+        id: "mainImg2",
+        type: "image",
+        label: "Main Image"
+      },
+      {
         id: "contact",
         type: "string",
         label: "Contact"
@@ -252,7 +262,7 @@ module.exports = createSchema([
         id: "image",
         type: "image",
         label: "Image"
-      }
+      },
     ]
   }
 ])
