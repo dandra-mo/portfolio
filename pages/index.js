@@ -1,6 +1,6 @@
 import React from 'react'
 // import Head from 'next/head'
-import { getStaticContent } from '@tipe/next'
+import { getStaticContent, getTipe } from '@tipe/next'
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import Project from '../components/project'
 
@@ -92,4 +92,11 @@ export default function Home({ documents }) {
   )
 }
 
-export const getStaticProps = getStaticContent({ query: { type: 'landingPage', limit: 1 } })
+export const getStaticProps = async (ctx) => {
+  const { tipe } = getTipe(ctx)
+  const { documents } = await tipe.getDocuments({ type: 'landingPage', limit: 1 })
+  return {
+    props: { documents },
+    revalidate: 60,
+  }
+}
