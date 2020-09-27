@@ -1,21 +1,24 @@
-import React from "react";
+import React from 'react'
 
-const Project = ({ item }) => (
-     <div key={item.value.title} className="w-full max-w-full flex px-12 mb-8">
-        <div class="border-r border-b border-l border-t border-indigo-400 bg-black rounded px-5 py-2 leading-normal shadow-2xl w-full">
-          <a href={item.value.link} className="hover:text-opacity-25">
-              <div className="my-8">
-                 <img className="h-auto flex-none rounded-t rounded-l text-center overflow-hidden" style={{maxWidth: "75px"}} src={item.value.image.url} />
-                <h2 className="uppercase tracking-wide text-md text-indigo-600 font-bold mt-4">{item.value.title}</h2>
-              </div>
-              </a>
+const Project = ({ item, last }) => (
+  <div key={item.value.title} className="w-full max-w-full h-full">
+    <a href={item.value.link} className="h-full" target="_blank" rel="noreferrer">
+      <div className="rounded p-3 shadow-md w-full border-solid border-gray-900 border-2 bg-black h-full hover:border-indigo-600 transition-all duration-100">
+        <div className="my-3">
+          {/* <img
+            className="h-auto rounded-t rounded-l text-center overflow-hidden"
+            style={{ maxWidth: '75px' }}
+            src={item.value.image.url}
+          /> */}
+          <h2 className="uppercase tracking-wide text-white font-bold mt-2 text-md">{item.value.title}</h2>
+        </div>
 
-              <div>
-                <div className="text-md text-gray-600 leading-relaxed">{item.value.description}
-              </div>
+        <div>
+          <div className="leading-relaxed text-gray-400 text-sm">{item.value.description}</div>
         </div>
       </div>
-    </div>
+    </a>
+  </div>
 )
 
-export default Project;
+export default Project

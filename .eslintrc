@@ -1,0 +1,6 @@
+{
+  "extends": "zoe",
+  "rules": {
+    "react/jsx-props-no-spreading": "off"
+  }
+}

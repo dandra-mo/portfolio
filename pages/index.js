@@ -1,100 +1,95 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { getStaticContent, EditButton } from "@tipe/next";
-import Project from "../components/project";
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import React from 'react'
+// import Head from 'next/head'
+import { getStaticContent } from '@tipe/next'
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
+import Project from '../components/project'
 
-
-export default function Home({documents, editUrl}) {
+export default function Home({ documents }) {
   const home = documents[0].fields
+
   return (
-    <div className="pb-12 bg-black"> 
-     <div className="flex items-center h-screen shadow-2xl border-b-2 border-white">
-      <div className="bg-black w-full h-screen border-b-2 border-white">
-        <div className="lg:mx-20 md:mx-12 sm:mx-8">
-          <h1 className="lg:text-4xl md:text-3xl sm:text-2xl font-bold mt-16 text-indigo-600">{home.title}</h1>
-
-                      {/* <!-- bio --> */}
-          <div
-            className="description w-full mt-2 text-gray-600 lg:text-lg md:text-sm sm:text-sm"
-          >
-            {home.description}
+    <div style={{ background: 'black' }}>
+      <header
+        className="flex items-center justify-items-center container flex "
+        style={{ height: '100vh', margin: '0 auto', padding: '0px 7vw' }}
+      >
+        <div>
+          <div className="flex items-center mb-4 flex-wrap">
+            <div className="flex-col lg:pr-4 mb-4 lg:mb-0 w-full lg:w-auto">
+              <figure style={{ margin: 0, padding: 0, width: '80px' }}>
+                <img
+                  src={`${home.mainImg.url}?w=160&h=160&fit=crop`}
+                  style={{ width: '100%', borderRadius: '100%', border: '3px solid white' }}
+                  alt=""
+                />
+              </figure>
+            </div>
+            <div className="flex-col">
+              <h1 className="font-bold text-white text-2xl md:lg:text-3xl lg:text-4xl">{home.title}</h1>
+            </div>
           </div>
 
-
-            {/* <!-- links --> */}
-      <div className="mt-4 flex justify-center">
-        <div className="px-2">
-          <a className="text-blue-500 hover:text-blue-800" href="https://www.linkedin.com/in/d-andra-moss-phd-she-her-hers-7547161b4/"><AiFillLinkedin /></a>
-          </div>  
-        <div className="px-2">
-          <a className="text-blue-500 hover:text-blue-800" href="https://github.com/dandra-mo"><AiFillGithub /></a>
-          </div> 
-        <div className="px-2">
-          <a className="text-blue-500 hover:text-blue-800" href="https://pqdtopen.proquest.com/doc/2434756577.html?FMT=ABS&pubnum=28002881">Published Work</a>
-          </div> 
-        <div className="px-2">
-          <a className="text-blue-500 hover:text-blue-800" href="https://drive.google.com/file/d/1EeVg8CSlZAVMBMBrfY_BPsgdt1xHsYNp/view?usp=sharing">Resume</a>
-          </div> 
-          <div className="px-2">
-          <a className="text-blue-500 hover:text-blue-800" href="#">Blog</a>
+          {/* <!-- bio --> */}
+          <div>
+            <p className="description w-full mt-2 text-gray-500 text-sm md:text-base lg:text-xl">{home.description}</p>
           </div>
-      </div>
+
+          {/* <!-- links --> */}
+          <div className="mt-6 flex">
+            <div className="pr-3">
+              <a className="text-white" href="https://www.linkedin.com/in/d-andra-moss-phd-she-her-hers-7547161b4/">
+                <AiFillLinkedin style={{ fontSize: '30px' }} />
+              </a>
+            </div>
+            <div className="px-3">
+              <a className="text-white" href="https://github.com/dandra-mo">
+                <AiFillGithub style={{ fontSize: '30px' }} />
+              </a>
+            </div>
+            <div className="px-3">
+              <a className="text-xs text-gray-400" href="mailto:dandramossphd@gmail.com?subject=Hello">
+                dandramossphd@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
-                    {/* <!-- profile pics --> */}
-      <div class="mt-4 flex justify-between bg-black">
-        <div className="px-2">
-          <img
-          src={home.mainImg.url}
-          size=""
-          className="lg:w-3/5 md:w-2/5 sm:w-1/5"
-          alt=""
-          />
-        </div>
-      </div>
+      </header>
+
+      <main>
+        <section className="py-8" style={{ margin: '0 auto', backgroundImage: 'linear-gradient(#030303, black)' }}>
+          <div className="container py-4" style={{ margin: '0 auto', padding: '0px 7vw' }}>
+            <div>
+              <div className="tracking-wide text-white font-bold py-3">
+                <h2 className="text-xl">{home.research.title}</h2>
+              </div>
+            </div>
+            {/* <!-- card -- */}
+            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+              {home.research.items.map((item, i) => (
+                <Project item={item} key={item.value.title} last={i === home.research.items.length - 1} />
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* <!-- Node/JS projects */}
+        <section className="py-8" style={{ margin: '0 auto', backgroundImage: 'linear-gradient(#030303, black)' }}>
+          <div className="container py-4" style={{ margin: '0 auto', padding: '0px 7vw' }}>
+            <div>
+              <div className="tracking-wide  text-white font-bold py-3">
+                <h2 className="text-xl">{home.projects.title}</h2>
+              </div>
+            </div>
+            {/* <!-- card -- */}
+            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+              {home.projects.items.map((item, i) => (
+                <Project item={item} key={item.value.title} last={i === home.research.items.length - 1} />
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-  </div>
+  )
+}
 
-          {/* <!-- Research projects -- */}
-    <div className="px-5 my-8">
-        <div className="uppercase tracking-wide text-lg text-indigo-600 font-bold pt-3">
-          <h1>{home.research.title}</h1>
-        </div>
-    </div>
-                {/* <!-- card -- */}
-    <div className="sm:grid grid-cols-2 gap-4">
-    {home.research.items.map(item => (
-     <Project item={item}/>
-  ))}
-  </div>
-                {/* <!-- Node/JS projects */}
-    <div className="px-5 my-8">
-        <div className="uppercase tracking-wide text-lg text-indigo-600 font-bold pt-3">
-          <h1>{home.projects.title}</h1>
-        </div>
-    </div>
-                      {/* <!-- card -- */}
-    <div className="sm:grid grid-cols-2 gap-4">
-    {home.projects.items.map(item => (
-      <Project item={item}/>
-  ))}
-   </div>
-
-             {/* <!-- Blog -- */ }
-    {/* <div className="px-5 my-8">
-        <div className="uppercase tracking-wide text-lg text-indigo-600 font-bold pt-3">
-          <h1>{home.blog.title}</h1>
-        </div>
-    </div> */}
-                {/* <!-- card -- */}
-    {/* <div className="grid grid-cols-2 gap-4">
-    {home.blog.items.map(item => (
-     <Project item={item}/>
-  ))}
-  </div> */}
-   </div>
-)}
-
-
-
-export const getStaticProps = getStaticContent({query: {type: "landingPage", limit: 1}})
+export const getStaticProps = getStaticContent({ query: { type: 'landingPage', limit: 1 } })
