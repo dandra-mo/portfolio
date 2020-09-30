@@ -56,37 +56,27 @@ export default function Home({ documents }) {
       </header>
 
       <main>
-        <section className="py-8" style={{ margin: '0 auto', backgroundImage: 'linear-gradient(#030303, black)' }}>
-          <div className="container py-4" style={{ margin: '0 auto', padding: '0px 7vw' }}>
-            <div>
-              <div className="tracking-wide text-white font-bold py-3">
-                <h2 className="text-xl">{home.research.title}</h2>
+        {home.sections.map((sectionItem) => (
+          <section
+            key={sectionItem.value.title}
+            className="py-8"
+            style={{ margin: '0 auto', backgroundImage: 'linear-gradient(#030303, black)' }}
+          >
+            <div className="container py-4" style={{ margin: '0 auto', padding: '0px 7vw' }}>
+              <div>
+                <div className="tracking-wide text-white font-bold py-3">
+                  <h2 className="text-xl">{sectionItem.value.title}</h2>
+                </div>
+              </div>
+              {/* <!-- card -- */}
+              <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+                {sectionItem.value.items.map((item, i) => (
+                  <Project item={item} key={item.value.title} last={i === sectionItem.value.items.length - 1} />
+                ))}
               </div>
             </div>
-            {/* <!-- card -- */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
-              {home.research.items.map((item, i) => (
-                <Project item={item} key={item.value.title} last={i === home.research.items.length - 1} />
-              ))}
-            </div>
-          </div>
-        </section>
-        {/* <!-- Node/JS projects */}
-        <section className="py-8" style={{ margin: '0 auto', backgroundImage: 'linear-gradient(#030303, black)' }}>
-          <div className="container py-4" style={{ margin: '0 auto', padding: '0px 7vw' }}>
-            <div>
-              <div className="tracking-wide  text-white font-bold py-3">
-                <h2 className="text-xl">{home.projects.title}</h2>
-              </div>
-            </div>
-            {/* <!-- card -- */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
-              {home.projects.items.map((item, i) => (
-                <Project item={item} key={item.value.title} last={i === home.research.items.length - 1} />
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        ))}
       </main>
     </div>
   )
