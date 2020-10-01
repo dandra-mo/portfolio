@@ -23,16 +23,6 @@ module.exports = createSchema([
         label: 'Main Image',
       },
       {
-        id: 'research',
-        type: 'section',
-        label: 'Research Section',
-      },
-      {
-        id: 'projects',
-        type: 'section',
-        label: 'Projects Section',
-      },
-      {
         id: 'sections',
         type: 'sectionList',
         label: 'Sections',
