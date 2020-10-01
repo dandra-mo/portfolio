@@ -10,7 +10,7 @@ export default function Home({ documents }) {
   return (
     <div style={{ background: 'black' }}>
       <header
-        className="flex items-center justify-items-center container flex "
+        className="items-center justify-items-center container flex "
         style={{ height: '100vh', margin: '0 auto', padding: '0px 7vw' }}
       >
         <div>
