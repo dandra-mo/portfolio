@@ -1,7 +1,7 @@
 import React from 'react'
 // import Head from 'next/head'
 import { getStaticContent, getTipe } from '@tipe/next'
-import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
+import { AiFillGithub, AiFillLinkedin, AiFillMediumCircle } from 'react-icons/ai'
 import Project from '../components/project'
 
 export default function Home({ documents }) {
@@ -44,6 +44,11 @@ export default function Home({ documents }) {
             <div className="px-3">
               <a className="text-white" href="https://github.com/dandra-mo">
                 <AiFillGithub style={{ fontSize: '30px' }} />
+              </a>
+            </div>
+            <div className="px-3">
+              <a className="text-white" href="https://medium.com/the-athletic-researcher">
+                <AiFillMediumCircle style={{ fontSize: '30px' }} />
               </a>
             </div>
             <div className="px-3">
