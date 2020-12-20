@@ -10,14 +10,14 @@
     "lint:fix": "zoe --fix"
   },
   "dependencies": {
-    "@tipe/js": "*",
-    "@tipe/next": "*",
-    "@tipe/react-editor": "*",
+    "@tipe/js": "^4.6.0",
+    "@tipe/next": "^0.2.4",
+    "@tipe/react-editor": "^1.10.1",
     "next": "9.5.3",
+    "next-mdx-remote": "*",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-icons": "^3.11.0",
-    "next-mdx-remote": "*"
+    "react-icons": "^3.11.0"
   },
   "devDependencies": {
     "jest": "^26.4.2",

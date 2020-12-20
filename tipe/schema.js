@@ -5,7 +5,7 @@ module.exports = createSchema([
     id: 'landingPage',
     type: 'document',
     label: 'Landing Page',
-    previewPath: '/',
+    previewPath: () => '/',
     fields: [
       {
         id: 'title',
