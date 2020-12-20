@@ -1,13 +1,13 @@
 
-  /** @jsx jsx */
-  import { jsx } from 'theme-ui'
   import React from 'react'
   import Head from 'next/head'
-  import { MediaPage, WithTipePage, typography } from '@tipe/react-editor'
+  import dynamic from 'next/dynamic'
+  import { WithTipePage, typography } from '@tipe/react-editor'
   import Link from 'next/link'
   import Router from 'next/router'
   import { createTipeClient } from '@tipe/js'
   import { TypographyStyle } from 'react-typography'
+
   let schema = require('../../tipe/schema')
   let customFields = require('../../tipe/fields')
 
@@ -18,6 +18,9 @@
   if (schema.default) {
     schema = schema.default
   }
+
+  const TipePage = dynamic(() => import('@tipe/react-editor').then(mod => mod.MediaPage), { ssr: false })
+  const MediaPage = props => <TipePage {...props} />
   
   const client = createTipeClient({
     environment: 'Production',
@@ -52,11 +55,4 @@
     },
   })
 
-  export default () => {
-    return (
-      <div>
-        <TypographyStyle typography={typography} />
-        <Page />
-      </div>
-    )
-  }
+  export default Page

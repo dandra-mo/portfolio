@@ -1,4 +1,4 @@
-import { createTipeClient } from '@tipe/js'
+import { previewHandler } from '@tipe/next'
 
 const clientOptions = {
   projectId: process.env.TIPE_PROJECT_ID,
@@ -9,32 +9,6 @@ const clientOptions = {
   key: process.env.TIPE_API_KEY || '',
 }
 
-const tipe = createTipeClient(clientOptions)
-
 export default async (req, res) => {
-  
-  if ( !req.query.slug || !req.query.id) {
-    return res.status(401).json({ message: 'Invalid token' })
-  }
-
-  if( req.query.secret !== process.env.NEXT_PUBLIC_TIPE_PREVIEW_SECRET) {
-    return res.status(401).json({ message: 'Invalid secret' })
-  }
-
-  const document = await tipe.getDocument({id: req.query.id, draft: true})
-
-  if (!document) {
-    return res.status(401).json({ message: 'Invalid Document' })
-  }
-
-  res.setPreviewData({}, {
-    maxAge: 30,
-  })
-  
-  res.writeHead(307, {
-    Location: req.query.slug + '?tipePreview=true'
-  })
-  
-  res.end()
+  previewHandler(req, res, clientOptions)
 }
-  
